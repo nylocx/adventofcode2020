@@ -6,7 +6,7 @@ slopes = [(1, 1), (3, 1), (5, 1), (7, 1), (1, 2)]
 
 with open("day_03_input.txt") as input_data:
     tree_map = np.array(
-        [[c == "#" for c in row.strip()] for row in input_data], dtype=bool
+        [np.array([c == "#" for c in row.strip()], dtype=bool) for row in input_data]
     )
 height, width = tree_map.shape
 
@@ -40,3 +40,6 @@ print(f"Number of trees encountered: {result}")
 result = math.prod(count_trees(tree_map, r, d) for r, d in slopes)
 print(f"The product of tree encounters on different slopes is: {result}")
 
+#%%
+import sys
+sys.getsizeof([True, False, True, False, True, False, True, False])
