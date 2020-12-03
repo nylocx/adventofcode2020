@@ -13,6 +13,6 @@ tree_map = np.tile(tree_map, math.ceil(height / width * max(s[0] for s in slopes
 #%% Count the trees (Part 1)
 print(f"Number of trees encountered: {sum(tree_map[:, 0::3].diagonal())}")
 
-#%% Count the trees for different slopes (Part 1)
+#%% Count the trees for different slopes (Part 2)
 result = math.prod(sum(tree_map[0::d, 0::r].diagonal()) for r, d in slopes)
 print(f"The product of tree encounters on different slopes is: {result}")
