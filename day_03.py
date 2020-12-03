@@ -22,3 +22,21 @@ slope_index_generator = (
 
 result = math.prod(sum(tree_map[s]) for s in slope_index_generator)
 print(f"The product of tree encounters on different slopes is: {result}")
+
+
+#%% The naive solutions is quicker in this case...
+def count_trees(tree_map, right: int, down: int):
+    columns = len(tree_map[0])
+    return sum(row[i*right % columns] == "#" for i, row in enumerate(tree_map[::down]))
+
+
+with open("day_03_input.txt") as input_data:
+    tree_map = [r.strip() for r in input_data]
+
+#%% Count the trees for different slopes (Part 2)
+result = count_trees(tree_map, 3, 1)
+print(f"Number of trees encountered: {result}")
+
+#%% Count the trees (Part 1)
+result = math.prod(count_trees(tree_map, r, d) for r, d in slopes)
+print(f"The product of tree encounters on different slopes is: {result}")
