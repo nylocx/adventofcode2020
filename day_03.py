@@ -11,7 +11,7 @@ with open("day_03_input.txt") as input_data:
 height, width = tree_map.shape
 
 #%% Count the trees (Part 1)
-result = sum(tree_map[np.arange(height), np.arange(0, height * 3, 3) % width])
+result = np.sum(tree_map[(np.arange(height), np.arange(0, height * 3, 3) % width)])
 print(f"Number of trees encountered: {result}")
 
 #%% Count the trees for different slopes (Part 2)
@@ -19,12 +19,11 @@ slope_index_generator = (
     (np.arange(0, height, d), np.arange(0, math.ceil(height / d) * r, r) % width)
     for r, d in slopes
 )
-
-result = math.prod(sum(tree_map[s]) for s in slope_index_generator)
+result = math.prod(np.sum(tree_map[s]) for s in slope_index_generator)
 print(f"The product of tree encounters on different slopes is: {result}")
 
 
-#%% The naive solutions is quicker in this case...
+#%% The naive solutions is slower and uses more memory...
 def count_trees(tree_map, right: int, down: int):
     columns = len(tree_map[0])
     return sum(row[i*right % columns] == "#" for i, row in enumerate(tree_map[::down]))
@@ -40,3 +39,4 @@ print(f"Number of trees encountered: {result}")
 #%% Count the trees (Part 1)
 result = math.prod(count_trees(tree_map, r, d) for r, d in slopes)
 print(f"The product of tree encounters on different slopes is: {result}")
+
