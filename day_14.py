@@ -14,7 +14,7 @@ with open("day_14_input.txt") as input_data:
             position, value = map(int, mem_regex.match(line).groups())
             result[position] = value & and_pattern | or_pattern
 
-sum(result.values())
+print(f"Sum of remaining values: {sum(result.values())}")
 
 #%% Part 2
 result = {}
@@ -35,4 +35,4 @@ with open("day_14_input.txt") as input_data:
             for or_pattern in or_patterns:
                 result[position & and_pattern | or_pattern] = value
 
-sum(result.values())
+print(f"Sum of remaining values: {sum(result.values())}")
