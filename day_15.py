@@ -6,7 +6,7 @@ last_value = input_data[-1]
 turn = len(input_data) + 1
 last_turn = 30000000
 while turn <= last_turn:
-    if turn % (last_turn // 100) == 0:
+    if turn % (last_turn // 10) == 0:
         print(f"{turn / last_turn * 100:.0f} % finished")
     if last_value not in history:
         current_value = 0
