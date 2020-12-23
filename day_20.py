@@ -1,13 +1,12 @@
 #%% Part 1
 import math
-from collections import defaultdict, Counter
+from collections import defaultdict
 from typing import Iterator
 
 import numpy as np
 import re
 import networkx as nx
 from dataclasses import dataclass
-import matplotlib.pyplot as plt
 
 
 @dataclass
